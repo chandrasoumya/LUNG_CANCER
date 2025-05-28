@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lung Cancer Survival Prediction</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <div class="container mx-auto px-4 py-8 flex-grow">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Lung Cancer Survival Prediction</h1>
+        <form action="/predict" method="post" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+            <div class="mb-4">
+                <label for="age" class="block text-sm font-medium text-gray-700">Age (years):</label>
+                <input type="number" id="age" name="age" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <div class="mb-4">
+                <label for="gender" class="block text-sm font-medium text-gray-700">Gender:</label>
+                <select id="gender" name="gender" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="country" class="block text-sm font-medium text-gray-700">Country:</label>
+                <input type="text" id="country" name="country" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <div class="mb-4">
+                <label for="cancer_stage" class="block text-sm font-medium text-gray-700">Cancer Stage:</label>
+                <select id="cancer_stage" name="cancer_stage" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    <option value="Stage I">Stage I</option>
+                    <option value="Stage II">Stage II</option>
+                    <option value="Stage III">Stage III</option>
+                    <option value="Stage IV">Stage IV</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="family_history" class="block text-sm font-medium text-gray-700">Family History of Cancer:</label>
+                <select id="family_history" name="family_history" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="smoking_status" class="block text-sm font-medium text-gray-700">Smoking Status:</label>
+                <select id="smoking_status" name="smoking_status" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    <option value="Current Smoker">Current Smoker</option>
+                    <option value="Former Smoker">Former Smoker</option>
+                    <option value="Never Smoked">Never Smoked</option>
+                    <option value="Passive Smoker">Passive Smoker</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="bmi" class="block text-sm font-medium text-gray-700">BMI:</label>
+                <input type="number" step="0.1" id="bmi" name="bmi" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <div class="mb-4">
+                <label for="cholesterol_level" class="block text-sm font-medium text-gray-700">Cholesterol Level (mg/dL):</label>
+                <input type="number" id="cholesterol_level" name="cholesterol_level" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <div class="mb-4">
+                <label for="hypertension" class="block text-sm font-medium text-gray-700">Hypertension:</label>
+                <select id="hypertension" name="hypertension" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="asthma" class="block text-sm font-medium text-gray-700">Asthma:</label>
+                <select id="asthma" name="asthma" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="cirrhosis" class="block text-sm font-medium text-gray-700">Cirrhosis:</label>
+                <select id="cirrhosis" name="cirrhosis" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="other_cancer" class="block text-sm font-medium text-gray-700">Other Cancer:</label>
+                <select id="other_cancer" name="other_cancer" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="treatment_type" class="block text-sm font-medium text-gray-700">Treatment Type:</label>
+                <select id="treatment_type" name="treatment_type" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    <option value="Surgery">Surgery</option>
+                    <option value="Chemotherapy">Chemotherapy</option>
+                    <option value="Radiation">Radiation</option>
+                    <option value="Combined">Combined</option>
+                </select>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Predict</button>
+        </form>
+    </div>
+    <footer class="bg-gray-800 text-white text-center py-4 mt-auto">
+        <p>© 2025 Lung Cancer Survival Prediction. All rights reserved.</p>
+    </footer>
+</body>
+</html>
